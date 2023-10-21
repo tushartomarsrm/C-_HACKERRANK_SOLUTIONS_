@@ -1,0 +1,30 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int n,q;
+    cin>>n>>q;
+    vector<vector<int>> arrayscomb;
+    while(n--){
+        int k;
+        cin>>k;
+        vector<int> arr;
+        while(k--){
+            int val;
+            cin>>val;
+            arr.push_back(val);
+        }
+        arrayscomb.push_back(arr);
+    } 
+    while(q--){
+        int x,y;
+        cin>>x>>y;
+        cout<<arrayscomb[x][y]<<endl;
+    }
+    return 0;
+}

@@ -1,0 +1,41 @@
+struct Workshop
+{
+    int start_time, duration, end_time;
+    Workshop(int start, int d) : start_time(start), duration(d)
+    {
+        end_time = start_time + duration;
+    }
+};
+
+struct Available_Workshops
+{
+    int n;
+    multimap<int, Workshop> workshops; //endTime - Workshop
+}available_workshops;
+
+
+Available_Workshops* initialize(int start_time[], int duration[], int n)
+{
+    available_workshops.n = n;
+    for(int i = 0; i < n; ++i)
+    {
+        Workshop w{start_time[i], duration[i]};
+        available_workshops.workshops.insert({w.end_time, w});
+    }
+    return &available_workshops;
+}
+
+int CalculateMaxWorkshops(Available_Workshops* ptr)
+{
+    int max = 0;
+    int time = ptr->workshops.begin()->second.start_time;
+    for(auto [end_time, workshop] : ptr->workshops)
+    {
+        if(workshop.start_time >= time)
+        {
+            time = end_time;
+            ++max;
+        }
+    }
+    return max;
+}

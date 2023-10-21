@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    int n;
+        std::cin >> n;
+        
+            std::vector<int> arr(n);
+                for (int i = 0; i < n; ++i) {
+                        std::cin >> arr[i];
+                            }
+                            
+                                int q;
+                                    std::cin >> q;
+                                    
+                                        while (q--) {
+                                                int query;
+                                                        std::cin >> query;
+                                                        
+                                                                auto it = std::lower_bound(arr.begin(), arr.end(), query);
+                                                                        int index = std::distance(arr.begin(), it);
+                                                                        
+                                                                                if (*it == query) {
+                                                                                            std::cout << "Yes " << index + 1 << std::endl;
+                                                                                                    } else {
+                                                                                                                std::cout << "No " << index + 1 << std::endl;
+                                                                                                                        }
+                                                                                                                            }
+                                                                                                                            
+                                                                                                                                return 0;
+                                                                                                                                }
+                                                                                                                                

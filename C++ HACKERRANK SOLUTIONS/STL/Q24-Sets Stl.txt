@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+
+    int p,q,r,x,i,k;
+    set <int> st;
+    cin>>k;
+
+    for(i=0;i<k;i++){
+
+    cin>>x;
+    if(x==1){
+        cin>>p;
+        st.insert(p);
+    }
+
+    if(x==2){
+        cin>>q;
+        st.erase(q);
+    }
+    if(x==3){
+        cin>>r;
+        auto pos = st.find(r);
+        if(pos!=st.end())
+            cout<<"Yes\n";
+        else
+            cout<<"No\n";
+    }
+
+}
+
+    printf("\n");
+    return 0;
+}

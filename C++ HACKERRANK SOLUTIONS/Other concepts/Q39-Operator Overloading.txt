@@ -1,0 +1,15 @@
+class Matrix {
+public:
+    Matrix operator+(const Matrix& m) {
+        Matrix res;
+        res.a = this->a;
+        for (size_t i = 0; i < m.a.size(); ++i) {
+            for (size_t j = 0; j < m.a[i].size(); ++j) {
+                res.a[i][j] += m.a[i][j]; 
+            }
+        }
+        return res;        
+    }
+
+    vector<vector<int> > a;
+};

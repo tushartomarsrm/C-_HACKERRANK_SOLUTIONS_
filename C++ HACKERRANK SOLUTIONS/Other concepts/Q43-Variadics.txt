@@ -1,0 +1,9 @@
+template<bool... digits>
+int reversed_binary_value(){
+    int result = 0, bit_idx = 0;    
+    for(bool bit : {digits...}){
+        result |= static_cast<int>(bit) << bit_idx;
+        bit_idx++;
+    }
+    return result;
+}

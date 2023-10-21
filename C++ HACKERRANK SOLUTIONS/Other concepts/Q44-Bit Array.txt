@@ -1,0 +1,24 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <bitset>
+using namespace std;
+
+
+const long long module = 1LL << 31;
+bitset<module> bits;
+
+int main() {
+    long long n, s, p, q;
+    cin >> n >> s >> p >> q;
+    
+    bits.set(s);
+    for (int i = 1; i < n; ++i) {
+        s = (s * p + q) & (module - 1);
+        bits.set(s);
+    }
+    cout << bits.count() << endl;
+    return 0;
+}   

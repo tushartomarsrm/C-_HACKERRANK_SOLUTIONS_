@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+class Stu{
+	public:
+    	int a;string b,c;int d;
+        	void seta(int a) {this->a=a;}
+            	void setb(string b){this->b=b;}
+                	void setc(string c){this->c=c;}
+                    	void setd(int d){this->d=d;}
+                        };
+                        int main(){
+                        	Stu st;
+                            	int a;
+                                	string b,c;
+                                    	int d;
+                                        	cin>>a;
+                                            	getchar();
+                                                	cin>>b>>c;
+                                                    	cin>>d;
+                                                        	st.seta(a);
+                                                            	st.setb(b);
+                                                                	st.setc(c);
+                                                                    	st.setd(d);
+                                                                        	cout<<st.a<<endl;
+                                                                            	cout<<st.c<<", "<<st.b<<endl;
+                                                                                	cout<<st.d<<endl<<endl;
+                                                                                    	cout<<a<<","<<b<<","<<c<<","<<d;
+                                                                                        
+                                                                                        	return 0;
+                                                                                            }

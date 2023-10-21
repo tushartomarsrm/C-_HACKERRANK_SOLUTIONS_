@@ -1,0 +1,11 @@
+Complex operator+(Complex B,Complex A){
+     Complex C;
+     C.a=B.a+A.a;
+     C.b=B.b+A.b;
+     return C;
+		 }
+     
+ostream &operator<< (ostream&s , Complex A){
+         s<<A.a<<"+i"<<A.b;
+         return s;
+     }

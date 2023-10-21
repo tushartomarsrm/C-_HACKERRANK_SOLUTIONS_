@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+class Triangle{
+    public:
+            void triangle(){
+                        cout<<"I am a triangle\n";
+                                }
+                                };
+                                class Isosceles : public Triangle{
+                                    public:
+                                        void func(){
+                                                cout<<"In an isosceles triangle two sides are equal"<<endl;
+                                                    }
+                                                            void isosceles(){
+                                                                        cout<<"I am an isosceles triangle\n";
+                                                                                    func();
+                                                                                            }
+                                                                                            };
+                                                                                            	
+                                                                                                int main(){
+                                                                                                    Isosceles isc;
+                                                                                                        isc.isosceles();
+                                                                                                            isc.triangle();
+                                                                                                                return 0;
+                                                                                                                }

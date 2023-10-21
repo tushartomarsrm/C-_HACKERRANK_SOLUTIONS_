@@ -1,0 +1,77 @@
+class LRUCache {
+public:
+    int capacity;
+    int size;
+    Node* head;
+    Node* tail;
+    map<int, Node*> mp;
+
+    LRUCache(int cap) : capacity(cap), size(0), head(nullptr), tail(nullptr) {}
+
+    void set(int key, int value) {
+        if (mp.find(key) != mp.end()) {
+            // Key already exists, update the value and move it to the front
+            Node* node = mp[key];
+            node->value = value;
+            moveToFront(node);
+        } else {
+            // Key doesn't exist, create a new node and add it to the front
+            Node* newNode = new Node(key, value);
+            if (size >= capacity) {
+                // Remove the LRU item
+                removeLRUItem();
+            }
+            addToFront(newNode);
+            mp[key] = newNode;
+            size++;
+        }
+    }
+
+    int get(int key) {
+        if (mp.find(key) != mp.end()) {
+            Node* node = mp[key];
+            moveToFront(node);
+            return node->value;
+        }
+        return -1;
+    }
+
+private:
+    void addToFront(Node* node) {
+        if (!head) {
+            head = tail = node;
+        } else {
+            node->next = head;
+            head->prev = node;
+            head = node;
+        }
+    }
+
+    void moveToFront(Node* node) {
+        if (node != head) {
+            if (node == tail) {
+                tail = tail->prev;
+                tail->next = nullptr;
+            } else {
+                node->prev->next = node->next;
+                node->next->prev = node->prev;
+            }
+            addToFront(node);
+        }
+    }
+
+    void removeLRUItem() {
+        if (tail) {
+            mp.erase(tail->key);
+            Node* toDelete = tail;
+            if (head == tail) {
+                head = tail = nullptr;
+            } else {
+                tail = tail->prev;
+                tail->next = nullptr;
+            }
+            delete toDelete;
+            size--;
+        }
+    }
+};

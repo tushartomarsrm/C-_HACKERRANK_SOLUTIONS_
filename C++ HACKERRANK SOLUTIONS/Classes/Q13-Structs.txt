@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+struct Student{
+	int a;
+    	string b,c;
+        	int d;
+            };
+            int main(){
+            	int a,d;
+                	string b,c;
+                    	Student st;
+                        	cin>>a;
+                            	getchar();
+                                	cin>>b;
+                                    	cin>>c;
+                                        	cin>>d;
+                                            	st.a=a;st.b=b;st.c=c;st.d=d;
+                                                	cout<<st.a<<" "<<st.b<<" "<<st.c<<" "<<st.d;
+                                                    
+                                                    	
+                                                        	return 0;
+                                                            }

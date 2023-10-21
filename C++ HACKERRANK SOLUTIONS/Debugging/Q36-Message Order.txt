@@ -1,0 +1,38 @@
+
+
+class Message {
+public: 
+    Message() {
+        // this will set the order or arrival, on creation time
+        set_order();
+    }
+    Message(const string text): Message() {text_=text;}
+    const string& get_text() {
+        return text_;
+    }
+    
+    // global variable to keep count of the number of messages created
+    static int order;
+    // public getter function
+    int get_order() const { return order_; }
+    // comparison operator
+    bool operator<(const Message& other) const {
+        return order_ < other.get_order();
+    }
+private:
+    string text_;
+    
+    // this is for internal use
+    int order_;
+    // this is called on creation time: set the order of arrival for the message
+    void set_order() { order_ = ++Message::order; }
+};
+int Message::order = 0;
+
+class MessageFactory {
+public:
+    MessageFactory() {}
+    Message create_message(const string& text) {
+        return Message(text);
+    }
+};

@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+class Student{
+	public:
+    	int scores;
+        	int a,b,c,d,e;
+            	void input(){
+                		int a,b,c,d,e;
+                        		cin>>a>>b>>c>>d>>e;
+                                		this->a=a;this->b=b;this->c=c;this->d=d;this->e=e;
+                                        		this->scores=this->a+this->b+this->c+this->d+this->e;
+                                                	}
+                                                    	int calculateTotalScores(){
+                                                        		return this->scores;
+                                                                	}
+                                                                    	};
+                                                                        	
+                                                                            int main(){
+                                                                             int n;
+                                                                              cin>>n;
+                                                                               int count=0;int initialsum=0;
+                                                                                for (int i=0;i<n;i++){
+                                                                                 int sum=0;
+                                                                                  Student s;
+                                                                                   s.input();
+                                                                                    if (i==0) { initialsum = s.calculateTotalScores();}
+                                                                                     else { sum = s.calculateTotalScores();
+                                                                                                  if (sum > initialsum) { count++;}
+                                                                                                   }
+                                                                                                    }
+                                                                                                     cout<<count;
+                                                                                                     	return 0;
+                                                                                                         }

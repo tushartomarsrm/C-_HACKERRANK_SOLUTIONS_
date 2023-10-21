@@ -1,0 +1,40 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <sstream>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    map<string, int> name_score_map;
+    int num;
+    cin >> num;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    int op_type, score;
+    string name, line;
+    istringstream ss;
+    while(num--)
+    {
+        getline(cin, line);
+        ss.str(line);
+        ss >> op_type >> name >> score;
+        switch (op_type)
+        {
+            case 1:
+            name_score_map[name] += score;
+            break;
+            case 2:
+            name_score_map.erase(name);
+            break;
+            case 3:
+            cout <<  name_score_map[name]<< endl;
+        }
+        ss.clear();
+    }
+    return 0;
+}

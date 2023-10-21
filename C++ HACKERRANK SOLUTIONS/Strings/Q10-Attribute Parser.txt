@@ -1,0 +1,99 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <sstream>
+#include <map>
+using namespace std;
+
+vector<string> split(const string &s, char delim);
+
+int main() {
+    unsigned int N=0,Q=0;
+    map<string,string> Query_box;
+    cin >> N >> Q;
+    int add = 0;
+    vector<string> order;
+    vector<string> items;
+    vector<string> res;
+    string input, index = "";
+    getline(cin,input); // Handle the whitespace because of cin
+    for( int i=0; i<N; i++) {
+        getline(cin, input);
+        items = split(input, ' ');
+        for( auto item: items) {
+            if( item.rfind("</") == 0) {
+                order.pop_back();
+            }
+            else if( item.rfind("<") == 0) {
+                res = split(item, '>');
+                item = res.front();
+                res = split(item, '<');
+                item = res.back();
+                order.push_back(item);
+                res.clear();
+            }
+            else {
+                if( item.rfind("=") == 0 ) {
+                    add++;
+                }
+                else if ( add ) {
+                    Query_box[index] = split(item,'"')[1];
+                    index = "";
+                    add--;
+                }
+                else {
+                for(auto i: order)
+                    index += i;
+                index += item;
+                Query_box[index] = "";
+                }
+            }
+        }
+    }
+    
+    
+    for(int i=0; i<Q; i++) {
+        getline(cin, input);
+        items = split(input, '~');
+        index = items.back();
+        input = items.front();
+        items = split(input, '.');
+        input = "";
+        for( auto item: items) {
+            input += item;
+        }
+        index = input + index;
+        
+        try {
+            add = Query_box[index].size();
+            //cout << index << " " << Query_box[index] << endl;
+            input = (add>0)?Query_box[index]:"Not Found!";
+            cout << input << endl;
+        } catch (exception) {
+            cout << "Not Found!" << endl;
+        }
+    }
+    // clear memory
+    res.clear();
+    res.shrink_to_fit();
+    order.clear();
+    order.shrink_to_fit();
+    items.clear();
+    items.shrink_to_fit();
+    Query_box.clear();
+      
+    return 0;
+}
+
+vector<string> split(const string &s, char delim) {
+    vector<string> result;
+    string item;
+    stringstream ss(s);
+    while (getline(ss,item,delim)) {
+        result.push_back(item);
+    }
+    return result;
+}  

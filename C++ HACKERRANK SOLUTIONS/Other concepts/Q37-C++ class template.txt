@@ -1,0 +1,19 @@
+
+template<class T>
+class AddElements{
+    T m_element;
+    public:
+    AddElements(T element):m_element(element){}
+    string concatenate(string Par)
+    {
+        m_element += Par;
+        return m_element;
+    }
+    T add(T Par)
+    {
+        m_element += Par;
+        return m_element;
+    }
+    
+    
+};
